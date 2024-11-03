@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insight-CAM Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Grad-CAM Layer Visualizations</h1>
+        <div class="results">
+            {% for image in images %}
+                <div class="card">
+                    <h2>Activation Map: {{ image.split('_')[1].split('.')[0] }}</h2>
+                    <img src="{{ url_for('uploaded_file', filename=image) }}" alt="Grad-CAM Layer Activation">
+                </div>
+            {% endfor %}
+        </div>
+        <a href="/" class="upload-another"><i class="fas fa-arrow-left"></i> Analyze Another Image</a>
+    </div>
+</body>
+<footer>
+    <p>Developed by Muthu Palaniappan M</p>
+</footer>
+</html>

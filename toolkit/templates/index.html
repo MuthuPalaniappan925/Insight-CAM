@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insight-CAM Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Insight-CAM Interface</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <div class="layer-selection">
+                <h2>Select Convolutional Layers for Analysis</h2>
+                <label><input type="checkbox" name="layers" value="block3_conv3" checked> Block 3 - Conv Layer 3</label>
+                <label><input type="checkbox" name="layers" value="block4_conv3"> Block 4 - Conv Layer 3</label>
+                <label><input type="checkbox" name="layers" value="block5_conv3"> Block 5 - Conv Layer 3</label>
+            </div>
+            <button type="submit"><i class="fas fa-upload"></i> Generate Grad-CAM Heatmap</button>
+        </form>
+    </div>
+</body>
+<footer>
+    <p>Developed by Muthu Palaniappan M</p>
+</footer>
+</html>
