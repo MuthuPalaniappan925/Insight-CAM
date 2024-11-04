@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Insight-CAM</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script>
+    // Function to toggle all checkboxes
+    function toggleSelectAll(source) {
+      checkboxes = document.getElementsByName('layer_names');
+      for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = source.checked;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Select Deep Layers for Grad-CAM Visualization</h1>
+  <form action="{{ url_for('predict') }}" method="get">
+    <!-- Select All checkbox -->
+    <input type="checkbox" onclick="toggleSelectAll(this)"> Select All<br><br>
+    
+    {% for layer in layers %}
+      <input type="checkbox" name="layer_names" value="{{ layer }}"> {{ layer }}<br>
+    {% endfor %}
+    
+    <input type="hidden" name="model_path" value="{{ model_path }}">
+    <input type="hidden" name="image_path" value="{{ image_path }}">
+    <input type="hidden" name="label_dict" value="{{ label_dict }}">
+    <input type="hidden" name="input_width" value="{{ input_width }}">
+    <input type="hidden" name="input_height" value="{{ input_height }}">
+    
+    <button type="submit">Visualize</button>
+  </form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Insight-CAM</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <h1>Trained Model Prediction Result</h1>
+  <p>Predicted Label: {{ predicted_label }}</p>
+  <h2>Grad-CAM Visualizations</h2>
+  {% for image, layer_name in images %}
+    <h3>Layer: {{ layer_name }}</h3>
+    <img src="{{ url_for('uploaded_file', filename=image) }}" alt="Grad-CAM Image for {{ layer_name }}">
+  {% endfor %}
+  <br><br>
+  <a href="/"><i class="fas fa-arrow-left"></i> Analyze Another Image</a>
+</body>
+</html>

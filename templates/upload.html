@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Insight-CAM</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <h1>Insight-CAM: Leveraging Class Activation Mapping (CAM)</h1>
+  <form method="post" enctype="multipart/form-data">
+    <label for="model">Upload Trained Model (allowed format .h5)</label>
+    <input type="file" name="model" id="model" required>
+    <br><br>
+    <label for="label_dict">Label Dictionary (JSON format)</label>
+    <textarea name="label_dict" id="label_dict" rows="4" cols="50" required>{"buildings": 0, "forest": 1, "glacier": 2, "mountain": 3, "sea": 4, "street": 5}</textarea>
+    <br><br>
+    <label for="image">Upload Test Image</label>
+    <input type="file" name="image" id="image" required>
+    <br><br>
+    <label for="input_width">Width of Images Used for Training the Model</label>
+    <input type="number" name="input_width" id="input_width" required>
+    <br><br>
+    <label for="input_height">Height of Images Used for Training the Model</label>
+    <input type="number" name="input_height" id="input_height" required>
+    <br><br>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
